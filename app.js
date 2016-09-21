@@ -15,47 +15,57 @@ var answersYes = {
 };
 
 var answersNo = {
-    ansRainNo: 'Well I hope you do. It rains alot here.',
+    ansRainNo: 'Shucks',
     ansHikingNo: 'Shucks',
     ansBreweryNo: 'Shucks',
     ansSeattleNo: 'Schucks'
 };
 
-
-var ansYesArr = Object.keys(answersYes).map(key => answersYes[key]);
-var ansNoArr = Object.keys(answersNo).map(key => answersNo[key]);
-
-function validateAns(req, res) {
-    console.log(req + ' user input');
-    if (req === ('YES' || 'yes' || 'y')) {
-        return res = 'yes';
-    } else if (req === ('NO' || 'no' || 'n')) {
-        return res = 'no';
-    } else {
-        return res = 'Incorrect Input must be a yes or no answer';
-    }
+function validate(input) {
+    var yes = ['Yes', "YES", 'yes', 'y', 'Y'];
+    var no = ['No', 'NO', 'no', 'n', 'N'];
+    for (var i = 0; i < yes.length; i++) {
+        if (yes[i] === input) {
+            input = 'yes';
+            i = yes.length;
+        }
+        if (no[i] === input) {
+            input = 'no';
+            i = yes.length;
+        }
+    };
+    return input;
 }
 
 function prompting() {
     var correct = 0;
     var ans = [];
+    //var valid = [];
+
+    //Mapping questions and answers to an arrray
     var questArr = Object.keys(questions).map(key => questions[key]);
-    for (var i = 0; i < questArr.length; i++) {
+    var ansYesArr = Object.keys(answersYes).map(key => answersYes[key]);
+    var ansNoArr = Object.keys(answersNo).map(key => answersNo[key]);
+
+    //Loop through question array and provide answer
+    for (var i = 0; i <= questArr.length - 1; i++) {
         var ans = [];
         ans[i] = prompt(questArr[i]);
+        ans[i] = validate(ans[i]);
         console.log(ans[i]);
 
-        var validAns = validateAns(ans[i]);
-        console.log(validAns);
-
-        if (validAns === 'yes') {
+        if (ans[i] === 'yes') {
             correct++;
             document.write('<p>' + ansYesArr[i] + '</p>');
+        } else if (ans[i] === 'no') {
+            document.write('<p>' + ansNoArr[i] + '</p>');
         } else {
-            document.write('<p>' + ansNoArr[i] + '< /p>');
+            document.write('<p>' + validate(ans[i]) + '</p>')
         }
     }
-}
+};
+
+
 
 function addElement(id) {
     var inputText = '<input type="text" name ="response">';
