@@ -49,7 +49,7 @@ function validate(input) {
             i = yes.length;
         }
     };
-    console.log(input); 
+    console.log(input);
     return input;
 }
 // Guessing my number
@@ -65,7 +65,7 @@ function guessAge(res) {
             count++;
         };
         if (res === num) {
-            console.log(res); 
+            console.log(res);
             res = 'Finally guessed it';
         } else {
             console.log(res);
@@ -106,6 +106,7 @@ function prompting() {
         //console.log(el);
         //var parent = document.getElementById('guessing_game');
         //console.log(parent);
+        //el.innerHTML = msg; use msg variable to build html
         //parent.document.appendChild(el);
 
         if (i === 0 || i === 6) {

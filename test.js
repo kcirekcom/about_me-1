@@ -15,8 +15,6 @@ function guessAge(res) {
     }
 }
 
-console.log(guessAge(3));
-
 //Question 6
 var num = 30;
 var count = 0;
@@ -44,26 +42,26 @@ if (res !== num) {
 
 //Question 7 What countries have I visited?
 var counter = 0;
-var guesses = 8 - counter; 
-var correctAns = []; 
-var countries = ['canada', 'mexico', 'germany', 'luxembourg', 'netherlands', 'france', 'spain', 'italy', 'greece', 'turkey']; 
+var guesses = 6 - counter;
+var correctAns = [];
+var countries = ['canada', 'mexico', 'germany', 'luxembourg', 'netherlands', 'france', 'spain', 'italy', 'greece', 'turkey'];
 var res = prompt('What countries have I traveled to?');
 counter++;
-for (var i = 0; i < 8; i++){
-    if(i < 8 || correctAns.length < 2) {
-        if(answers[i] === res){
+for (var i = 0; i < 8; i++) {
+    if (counter < 6 || correctAns.length < 2) {
+        if (answers[i] === res) {
             prompt('You guessed ' + correctAns.length + ' of them right, keep guessing.');
-            correctAns.push(res); 
-            counter++; 
+            correctAns.push(res);
+            counter++;
         } else {
             prompt('Sorry, that wasnt right you have ' + guesses + ' left.');
             counter++;
         }
     } else {
-        if(correctAns.length === 2){
-            alert('You guessed 2 of the Countries I have visited.' + correctAns[0] + ' ' + correctAns[1]); 
-        } else{
-            alert('Sorry you didnt get a single country I have visited!'); 
+        if (correctAns.length === 2) {
+            alert('You guessed 2 of the Countries I have visited.' + correctAns[0] + ' ' + correctAns[1]);
+        } else {
+            alert('Sorry you didnt get a single country I have visited!');
         }
     }
 }
