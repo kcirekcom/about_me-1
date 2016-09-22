@@ -29,7 +29,7 @@ answersYes = {
 answersNo = {
     ansRainNo: 'The rain isnt that bad.',
     ansHikingNo: 'Missing out on alot of beautiful views',
-    ansBreweryNo: 'Well you are behind the curbe, should stop by Fremont Brewing or Stone.',
+    ansBreweryNo: 'Well you are behind the cruve, should stop by Fremont Brewing or Stone.',
     ansSeattleNo: 'Then I need to show you around.',
     ansPokemonNo: 'You got it right, I dont play this game.',
     ansAgeYes: 'Sorry that isnt how old I am.'
@@ -49,6 +49,7 @@ function validate(input) {
             i = yes.length;
         }
     };
+    console.log(input); 
     return input;
 }
 // Guessing my number
@@ -59,15 +60,19 @@ function guessAge(res) {
     count++;
     if (res !== num) {
         while (res !== num || count < 3) {
+            console.log(res);
             res = prompt('Guess again?');
             count++;
         };
         if (res === num) {
+            console.log(res); 
             res = 'Finally guessed it';
         } else {
+            console.log(res);
             res = 'Sorry you are out of guesses';
         }
     } else {
+        console.log(res);
         return res = 'Wow got it first try';
     }
 }
