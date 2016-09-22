@@ -17,30 +17,53 @@ function guessAge(res) {
 
 console.log(guessAge(3));
 
-
+//Question 6
 var num = 30;
 var count = 0;
 var res = prompt('Guess my age?');
 count++;
 if (res !== num) {
     while (res !== num || count < 3) {
-        if(num > res){
+        if (num > res) {
             res = prompt('Too low! guess again.');
             count++;
         } else {
             res = prompt('Too high! guess again.');
-            count++; 
+            count++;
         }
     };
-}
-else if (res === num) {
-    if( count === 1){
+} else if (res === num) {
+    if (count === 1) {
         res = alert('Wow you got it first try');
-    } 
-    else if (count <= 4) {
+    } else if (count <= 4) {
         res = alert('Finally guessed it');
-    } 
-    else {
+    } else {
         res = alert('Sorry you are out of guesses');
+    }
+}
+
+//Question 7 What countries have I visited?
+var counter = 0;
+var guesses = 8 - counter; 
+var correctAns = []; 
+var countries = ['canada', 'mexico', 'germany', 'luxembourg', 'netherlands', 'france', 'spain', 'italy', 'greece', 'turkey']; 
+var res = prompt('What countries have I traveled to?');
+counter++;
+for (var i = 0; i < 8; i++){
+    if(i < 8 || correctAns.length < 2) {
+        if(answers[i] === res){
+            prompt('You guessed ' + correctAns.length + ' of them right, keep guessing.');
+            correctAns.push(res); 
+            counter++; 
+        } else {
+            prompt('Sorry, that wasnt right you have ' + guesses + ' left.');
+            counter++;
+        }
+    } else {
+        if(correctAns.length === 2){
+            alert('You guessed 2 of the Countries I have visited.' + correctAns[0] + ' ' + correctAns[1]); 
+        } else{
+            alert('Sorry you didnt get a single country I have visited!'); 
+        }
     }
 }
