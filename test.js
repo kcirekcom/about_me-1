@@ -17,31 +17,30 @@ function guessAge(res) {
 
 console.log(guessAge(3));
 
-function guessAge2(res) {
-    var num = 30;
-    var count = 0;
-    //res = prompt('Guess my age?');
-    count++;
-    if (res !== num) {
-        while (res !== num || count < 3) {
-            //res = prompt('Guess again?');
+
+var num = 30;
+var count = 0;
+var res = prompt('Guess my age?');
+count++;
+if (res !== num) {
+    while (res !== num || count < 3) {
+        if(num > res){
+            res = prompt('Too low! guess again.');
             count++;
-        };
-        if (res === num) {
-            res = 'Finally guessed it';
         } else {
-            res = 'Sorry you are out of guesses';
+            res = prompt('Too high! guess again.');
+            count++; 
         }
-    } else {
-        return res = 'Wow got it first try';
+    };
+}
+else if (res === num) {
+    if( count === 1){
+        res = alert('Wow you got it first try');
+    } 
+    else if (count <= 4) {
+        res = alert('Finally guessed it');
+    } 
+    else {
+        res = alert('Sorry you are out of guesses');
     }
 }
-
-var arr = [22, 20, 30]
-var guess = function(arr) {
-    arr.forEach(function(item, index, array) {
-        cosole.log(guessAge2(index));
-    })
-}
-
-guess();
