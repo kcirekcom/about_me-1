@@ -56,7 +56,6 @@ function validate(input) {
 function guessAge(res) {
     var num = 30;
     var count = 0;
-    res = prompt('Guess my age?');
     count++;
     if (res !== num) {
         while (res !== num || count < 3) {
@@ -64,16 +63,16 @@ function guessAge(res) {
             res = prompt('Guess again?');
             count++;
         };
-        if (res === num) {
-            console.log(res);
-            res = 'Finally guessed it';
-        } else {
             console.log(res);
             res = 'Sorry you are out of guesses';
-        }
     } else {
-        console.log(res);
-        return res = 'Wow got it first try';
+        if (count > 1) {
+          console.log(res);
+          res = 'Finally guessed it';
+        } else {
+          console.log(res);
+          res = 'Wow got it first try';
+        }
     }
 }
 
@@ -88,15 +87,16 @@ function prompting() {
     var ansNoArr = Object.keys(answersNo).map(key => answersNo[key]);
 
     //Loop through question array and provide response
-    for (var i = 0; i <= questArr.length - 1; i++) {
+    for (var i = 6; i <= questArr.length - 1; i++) {
         var ans = [];
         if (i !== 0) {
             ans[i] = prompt(questArr[i]);
             ans[i] = validate(ans[i]);
             console.log(ans[i]);
         } else if (i === 6) {
-            ans[i] == prompt(questArr[i]);
+            ans[i] = prompt(questArr[i]);
             guessAge(ans[i]);
+            }
         } else {
             ans[i] = prompt(questArr[i]);
         }
@@ -124,7 +124,7 @@ function prompting() {
     }
 };
 
-//dynamically genereate a div 
+//dynamically genereate a div
 function addElement(id) {
     var inputText = '<input type="text" name ="response">';
     var inputSubmit = '<input type="submit" value="SUBMIT">';
@@ -141,7 +141,7 @@ function showHideForm(show, id) {
     if (show == 'yes') {
         addElement(id);
         document.getElementById(newDiv).style.display = 'block';
-        //document.getElementById(newDiv).style.display = 'none'; 
+        //document.getElementById(newDiv).style.display = 'none';
     }
     if (show == 'no') {
         addElement(id);
